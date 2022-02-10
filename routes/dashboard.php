@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+
+
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+    Route::get("dashboard/login", "Auth\LoginController@login")->name("dashboard.login");
+    Route::post("dashboard/loginProcess", "Auth\LoginController@loginProcess")->name("dashboard.loginProcess");
+
+    Route::prefix('dashboard')->name('dashboard.')->middleware(['auth:admins'])->group(function(){
+        Route::post("logout", 'Auth\LogoutController@logout')->name('logout');
+        Route::get('home' ,'HomeController@home')->name('home');
+
+        //Route::Categories
+        Route::resource('categories', 'CategoryController');
+    });
+
+});

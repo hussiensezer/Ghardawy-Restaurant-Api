@@ -15,6 +15,7 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "mcamara/laravel-localization": "^1.7",
+        "spatie/laravel-translatable": "^4.6",
         "tymon/jwt-auth": "^1.0",
         "yoeunes/toastr": "^1.2"
     },
@@ -36,6 +37,9 @@
         }
     },
     "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },
