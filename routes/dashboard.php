@@ -25,6 +25,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
         //Route::Categories
         Route::resource('categories', 'CategoryController');
+
+        // Route::Places
+        Route::resource('places', 'PlaceController');
     });
 
 });

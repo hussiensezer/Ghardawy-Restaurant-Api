@@ -14,6 +14,16 @@
                     <li class="{{ trim($__env->yieldContent('active')) &&  trim($__env->yieldContent('active'))== 'create_category' ? 'active' : ''}}"><a class="menu-item" href="{{route('dashboard.categories.create')}}"><i></i><span data-i18n="create_category">@lang('sidebar.create_category')</span></a></li>
                 </ul>
             </li>
+            <!-- End Li-->
+
+            <!-- Start Li-->
+            <li class=" nav-item {{ trim($__env->yieldContent('active')) &&  trim($__env->yieldContent('active'))== 'places' ? 'active' : ''}}"><a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="places">@lang('sidebar.places')</span></a>
+                <ul class="menu-content">
+                    <li class="{{ trim($__env->yieldContent('active')) &&  trim($__env->yieldContent('active'))== 'all_places' ? 'active' : ''}}"><a class="menu-item" href="{{route('dashboard.places.index')}}"><i></i><span data-i18n="all_places">@lang('sidebar.all_places')</span></a></li>
+                    <li class="{{ trim($__env->yieldContent('active')) &&  trim($__env->yieldContent('active'))== 'create_place' ? 'active' : ''}}"><a class="menu-item" href="{{route('dashboard.places.create')}}"><i></i><span data-i18n="create_place">@lang('sidebar.create_place')</span></a></li>
+                </ul>
+            </li>
+            <!-- End Li-->
 
         </ul>
     </div>

@@ -1,13 +1,15 @@
 <?php
 namespace App\Traits;
 
+
+
+use Illuminate\Http\Request;
 trait GeneralTrait
 {
     // Get Language Of Project
     public function getCurrentLang() {
         return App()->getLocale();
     }
-
     // Return Json Request By Error Response
     public function returnError($codeStatus,$msg) {
         return response() ->json([
