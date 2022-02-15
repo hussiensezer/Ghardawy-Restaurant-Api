@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get("dashboard/login", "Auth\LoginController@login")->name("dashboard.login");
+Route::post("dashboard/loginProcess", "Auth\LoginController@loginProcess")->name("dashboard.loginProcess");
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
-    Route::get("dashboard/login", "Auth\LoginController@login")->name("dashboard.login");
-    Route::post("dashboard/loginProcess", "Auth\LoginController@loginProcess")->name("dashboard.loginProcess");
+
 
     Route::prefix('dashboard')->name('dashboard.')->middleware(['auth:admins'])->group(function(){
         Route::post("logout", 'Auth\LogoutController@logout')->name('logout');
@@ -28,6 +28,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
         // Route::Places
         Route::resource('places', 'PlaceController');
+
+        // Route::Menu Of Places
+        Route::get('place/{id}/menu/create', 'MenuController@create')->name('place.menu.create');
+        Route::post('place/{id}/menu/store', 'MenuController@store')->name('place.menu.store');
+
+        // Route::Sizes
+        Route::resource('sizes', 'SizeController');
     });
 
 });

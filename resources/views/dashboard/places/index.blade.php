@@ -54,7 +54,7 @@
                                <i class="la la-plus-circle"></i>
                            </button>
                            <div class="dropdown-menu p-0" aria-labelledby="dropdownMenu3">
-
+                               <a href="{{route("dashboard.place.menu.create", $place->id)}}" class="dropdown-item">@lang('place.add_menu')</a>
                            </div>
                        </div>
                    </td>

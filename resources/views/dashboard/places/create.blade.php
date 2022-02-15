@@ -87,21 +87,6 @@
 
             <!-- Start Row -->
             <div class="row">
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="full_address">@lang('place.full_address')</label>
-                        <input type="text" id="full_address" class="form-control" placeholder="@lang('place.full_address')" name="full_address" value="{{old('full_address')}}">
-                        <div class="alert alert-danger mt-1 d-none" style="color:white !important;"></div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="email">@lang('place.email')</label>
-                        <input type="email" id="email" class="form-control" placeholder="@lang('place.email')" name="email" value="{{old('email')}}">
-                        <div class="alert alert-danger mt-1 d-none" style="color:white !important;"></div>
-                    </div>
-                </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="phone_number">@lang('place.phone_number')</label>
@@ -110,15 +95,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="working_hours">@lang('place.working_hours')</label>
-                        <input type="number" id="working_hours" class="form-control" placeholder="@lang('place.working_hours')" name="working_hours" value="{{old('working_hours')}}">
+                        <textarea  id="" cols="30" rows="2" id="working_hours" class="form-control" name="working_hours">{{old('working_hours')}}</textarea>
                         <div class="alert alert-danger mt-1 d-none" style="color:white !important;"></div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="address">@lang('place.address')</label>
                         <input type="text" id="address" class="form-control" placeholder="@lang('place.address')" name="address" value="{{old('address')}}">

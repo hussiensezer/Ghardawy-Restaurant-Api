@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenuPriceSizesTable extends Migration
+class CreateSizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateMenuPriceSizesTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_price_sizes', function (Blueprint $table) {
+        Schema::create('sizes', function (Blueprint $table) {
             $table->id();
-            $table->text('price');
-            $table->unsignedBigInteger('size_id');
-            $table->unsignedBigInteger('menu_id');
-            $table->unsignedBigInteger('admin_id');
+            $table->text('name');
             $table->boolean('status');
+            $table->unsignedBigInteger('admin_id');
             $table->timestamps();
-            $table->foreign("size_id")->references("id")->on("sizes")->onDelete("cascade")->cascadeOnUpdate();
             $table->foreign("admin_id")->references("id")->on("admins")->onDelete("cascade")->cascadeOnUpdate();
-            $table->foreign("menu_id")->references("id")->on("menus")->onDelete("cascade")->cascadeOnUpdate();
 
         });
     }
@@ -35,6 +31,6 @@ class CreateMenuPriceSizesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_price_sizes');
+        Schema::dropIfExists('sizes');
     }
 }

@@ -22,4 +22,8 @@ class Place extends Model
     public function ownerId() {
         return $this->belongsTo(Owner::class,'owner_id', 'id');
     }
+
+    public function menus() {
+        return $this->hasMany( Menu::class ,'place_id', 'id');
+    }// End Menus
 }

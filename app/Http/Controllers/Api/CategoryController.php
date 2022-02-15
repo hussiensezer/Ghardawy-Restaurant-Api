@@ -17,7 +17,5 @@ class CategoryController extends Controller
        $lang = $this->LanguageData('language', 'name' , 'categoryName' ,$request);
        $categories = Category::select(['id',$lang, 'slug','category_image'])->where("status", 1)->get();
        return $this->returnData('categories', $categories);
-
-
    }
 }
