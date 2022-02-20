@@ -17,8 +17,15 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
        });
 
    });// End namespace Auth
-// Category Route
-
+    // Category Route
     Route::get('categories', 'CategoryController@index')->name('categories');
+
+    //Place Route
     Route::get('category/{id}/places', 'PlaceController@index')->name('category.places');
+
+    //Menu Route
+    Route::get('place/{id}/menu', 'MenuController@index')->name('place.menu');
+
+    //Details Like Add-ons Sizes Of Item Menu
+    Route::get('menu/{id}/details', 'ItemController@index')->name('menu.details');
 });

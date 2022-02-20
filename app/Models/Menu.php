@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Abstracts\UnicodeModel;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Menu extends Model
+class Menu extends UnicodeModel
 {
     use HasTranslations;
     protected $table = 'menus';
