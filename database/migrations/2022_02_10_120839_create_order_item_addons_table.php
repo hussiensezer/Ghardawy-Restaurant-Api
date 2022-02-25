@@ -17,11 +17,11 @@ class CreateOrderItemAddonsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('order_item_id');
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('addon_id');
+            $table->string('price');
+            $table->string('quantity');
             $table->timestamps();
             $table->foreign("order_item_id")->references("id")->on("order_items")->onDelete("cascade")->cascadeOnUpdate();
-            $table->foreign("order_id")->references("id")->on("orders")->onDelete("cascade")->cascadeOnUpdate();
             $table->foreign("customer_id")->references("id")->on("customers")->onDelete("cascade")->cascadeOnUpdate();
             $table->foreign("addon_id")->references("id")->on("addons")->onDelete("cascade")->cascadeOnUpdate();
 

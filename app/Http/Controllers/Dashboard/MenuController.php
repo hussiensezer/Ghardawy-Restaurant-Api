@@ -52,7 +52,7 @@ class MenuController extends Controller
                }// End ForEach
            }// End If
 
-            if(isset($request->sizes) && !empty($request->sizes)){
+            if(isset($request->addons) && !empty($request->addons)){
                 foreach($request->addons as $addOn) {
                     $addOnMenu = $menu->addOn()->create([
                         'name'      => [

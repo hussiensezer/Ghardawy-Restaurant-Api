@@ -20,6 +20,8 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('place_id');
             $table->unsignedBigInteger('order_id');
+            $table->string('price');
+            $table->string('quantity');
             $table->timestamps();
 
             $table->foreign("menu_id")->references("id")->on("menus")->onDelete("cascade")->cascadeOnUpdate();

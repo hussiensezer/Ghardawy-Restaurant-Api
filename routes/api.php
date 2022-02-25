@@ -17,6 +17,7 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
        });
 
    });// End namespace Auth
+
     // Category Route
     Route::get('categories', 'CategoryController@index')->name('categories');
 
@@ -28,4 +29,9 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
 
     //Details Like Add-ons Sizes Of Item Menu
     Route::get('menu/{id}/details', 'ItemController@index')->name('menu.details');
+
+    Route::group(['middleware' => ['auth.guard:api-customer']] ,function(){
+    //Cart Routes
+    Route::post('cart/checkout', 'CartController@checkout')->name('cart.checkout');
+    });
 });

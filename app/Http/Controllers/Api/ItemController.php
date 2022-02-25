@@ -12,6 +12,8 @@ class ItemController extends Controller
 {
 
     use LanguageTrait, GeneralTrait;
+
+
     public function index(Request $request, $id) {
 
         $name = $this->LanguageData('language', 'name', 'itemName',  $request);

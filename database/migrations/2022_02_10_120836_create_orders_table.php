@@ -17,12 +17,12 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('place_id');
-            $table->unsignedBigInteger('caption_id');
+            $table->unsignedBigInteger('caption_id')->nullable();
             $table->enum('status', ['Pending', 'Preparing','On-Way','Delivered', 'Canceled','Returned']);
             $table->string('tax');
             $table->string('fees');
-            $table->string('delivered-fees');
-            $table->string('total-price');
+            $table->string('delivered_fees');
+            $table->string('total_price');
             $table->timestamps();
 
             $table->foreign("customer_id")->references("id")->on("customers")->onDelete("cascade")->cascadeOnUpdate();
