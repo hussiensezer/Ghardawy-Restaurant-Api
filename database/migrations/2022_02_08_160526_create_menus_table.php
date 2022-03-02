@@ -19,9 +19,11 @@ class CreateMenusTable extends Migration
             $table->string('image');
             $table->text('description');
             $table->boolean('status');
+            $table->unsignedBigInteger('category_menu_id');
             $table->unsignedBigInteger('place_id');
             $table->unsignedBigInteger('admin_id');
             $table->foreign("admin_id")->references("id")->on("admins")->onDelete("cascade")->cascadeOnUpdate();
+            $table->foreign("category_menu_id")->references("id")->on("menu_categories")->onDelete("cascade")->cascadeOnUpdate();
             $table->foreign("place_id")->references("id")->on("places")->onDelete("cascade")->cascadeOnUpdate();
             $table->timestamps();
         });
