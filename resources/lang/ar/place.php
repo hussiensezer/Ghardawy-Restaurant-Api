@@ -46,6 +46,9 @@ return [
     'add_ons_name_ru'          => 'اسم الاضافة باللغة الروسية',
     'add_ones_price'           => 'سعر الاصافة',
     'add_addons'               => 'اضافة جديدة',
+    'add_categories'           => 'اضافة تصنيف للمكان',
+    'category_menu'            => 'تصنيف المينو',
+    'edit_place_category'      => 'تعديل تصنيفات المكان',
 
 
 

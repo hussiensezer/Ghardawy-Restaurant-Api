@@ -12,9 +12,10 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
 use GeneralTrait;
-    public function store(Request $request) {
+    public function checkout(Request $request) {
 
             $array = [
+                'order'=> [
                'place'     => 1,
                 'total'   => 2000,
                 //Start Item
@@ -113,15 +114,10 @@ use GeneralTrait;
                            ]
                    ],// End Item
                ],
-
-
-
-
-
-
-
-
+            ],
             ];
+
+        return $request;
         try{
             $collection = collect($array);
 

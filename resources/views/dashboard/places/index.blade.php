@@ -43,6 +43,7 @@
                             </button>
                             <div class="dropdown-menu p-0" aria-labelledby="dropdownMenu2">
                                 <a href="{{route("dashboard.places.edit", $place->id)}}" class="dropdown-item">@lang('place.edit_basic')</a>
+                                <a href="{{route("dashboard.place.category.index", $place->id)}}" class="dropdown-item">@lang('place.edit_place_category')</a>
                             </div>
                         </div>
                     </td>
@@ -55,7 +56,11 @@
                            </button>
                            <div class="dropdown-menu p-0" aria-labelledby="dropdownMenu3">
                                <a href="{{route("dashboard.place.menu.create", $place->id)}}" class="dropdown-item">@lang('place.add_menu')</a>
+                               <a href="{{route("dashboard.place.category.create", $place->id)}}" class="dropdown-item">@lang('place.add_categories')</a>
+
                            </div>
+
+
                        </div>
                    </td>
                </tr>

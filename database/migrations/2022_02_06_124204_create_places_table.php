@@ -23,6 +23,7 @@ class CreatePlacesTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('owner_id');
+            $table->unsignedBigInteger('menu_category_id');
             $table->string('address');
             $table->string('phone');
             $table->string('working_hours');
@@ -32,6 +33,7 @@ class CreatePlacesTable extends Migration
             $table->string('delivers');
             $table->timestamps();
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade")->cascadeOnUpdate();
+            $table->foreign("menu_category_id")->references("id")->on("menu_categories")->onDelete("cascade")->cascadeOnUpdate();
             $table->foreign("admin_id")->references("id")->on("admins")->onDelete("cascade")->cascadeOnUpdate();
             $table->foreign("owner_id")->references("id")->on("owners")->onDelete("cascade")->cascadeOnUpdate();
 

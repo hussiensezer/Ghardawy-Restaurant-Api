@@ -24,8 +24,11 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
     //Place Route
     Route::get('category/{id}/places', 'PlaceController@index')->name('category.places');
 
+    //Categories Of Menu Route
+    Route::get('place/{id}/categoriesMenu','MenuCategoryController@index' )->name('place.categoriesMenu');
+
     //Menu Route
-    Route::get('place/{id}/menu', 'MenuController@index')->name('place.menu');
+    Route::get('categoryMenu/{id}/menu', 'MenuController@index')->name('categoryMenu.menu');
 
     //Details Like Add-ons Sizes Of Item Menu
     Route::get('menu/{id}/details', 'ItemController@index')->name('menu.details');

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class MenuStoreRequest extends FormRequest
+class   MenuStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,6 +40,7 @@ class MenuStoreRequest extends FormRequest
             'description_ar'    => ['required'],
             'description_en'    => ['required'],
             'description_ru'    => ['required'],
+            'category_menu'     => ['required', 'exists:menu_categories,id'],
 
             'image'             =>
             [

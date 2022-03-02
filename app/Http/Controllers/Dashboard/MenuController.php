@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuStoreRequest;
+use App\Models\MenuCategory;
 use App\Models\Place;
 use App\Models\Size;
 use App\Traits\ImageTrait;
@@ -14,8 +15,14 @@ class MenuController extends Controller
 {
     use ImageTrait;
 
+
+
     public function create($id) {
-        $place = Place::findOrFail($id);
+        $place = Place::with([
+            'menuCategories' => function($q) {
+                $q->select(['id','name','place_id']);
+            }// End MenuCategories
+        ])->findOrFail($id);
         $sizes =  Size::select(['id', 'name'])->where('status', 1)->get();
         return view('dashboard.places.menus.create', compact('place','sizes'));
     }// End
@@ -26,19 +33,20 @@ class MenuController extends Controller
             $place = Place::findOrFail($id);
 
             $menu = $place->menus()->create([
-                'name'          => [
-                    'ar'        => $request->name_ar,
-                    'en'        => $request->name_en,
-                    'ru'        => $request->name_ru,
+                'name'              => [
+                    'ar'            => $request->name_ar,
+                    'en'            => $request->name_en,
+                    'ru'            => $request->name_ru,
                 ],
-                'description'   => [
-                    'ar'        => $request->description_ar,
-                    'en'        => $request->description_en,
-                    'ru'        => $request->description_ru
+                'description'       => [
+                    'ar'            => $request->description_ar,
+                    'en'            => $request->description_en,
+                    'ru'            => $request->description_ru
                 ],
-                'image'         => $this->imageStore($request->image, 'files', 'menus'),
-                'status'        => 1,
-                'admin_id'      => auth()->user()->id,
+                'category_menu_id'  => $request->category_menu,
+                'image'             => $this->imageStore($request->image, 'files', 'menus'),
+                'status'            => 1,
+                'admin_id'          => auth()->user()->id,
             ]);
 
            if(isset($request->sizes) && !empty($request->sizes)) {

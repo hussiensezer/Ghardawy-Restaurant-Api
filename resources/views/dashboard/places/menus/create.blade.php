@@ -61,12 +61,22 @@
                     <textarea name="description_ru" id="description_ru" cols="30" rows="5" class="form-control">{{old('description_ru')}}</textarea>
                 </div>
             </div>
-        <div class="row">
+        <div class="row mt-1">
             <div class="col-md-6">
                 <label for="image" class="">@lang('place.image')</label>
                 <input type="file" name="image" id="image" class="form-control" accept="image/jpeg , image/png ,image/gif,image/jpg, image/svg">
                 <b class="d-block"><small class="text-danger mt-2">الصور يجب انت تكون من نوع {{config('setting.image.allow_extensions')}}  </small></b>
                 <b class="d-block"><small class="text-danger"> حجم الصورة الايزيد عن {{config('setting.image.size')}} كيلو بايت</small></b>
+            </div>
+
+            <div class="col-md-6">
+                <label for="category_menu" class="">@lang('place.category_menu')</label>
+                <select name="category_menu" id="category_menu" class="form-control">
+                    <option disabled selected>@lang('global.choose') .... </option>
+                    @foreach($place->menuCategories  as $mc)
+                        <option value="{{$mc->id}}">{{$mc->name}}</option>
+                    @endforeach
+                </select>
             </div>
 
         </div>

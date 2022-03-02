@@ -16,8 +16,8 @@ class MenuController extends Controller
         $name = $this->LanguageData('language', 'name', 'itemName',  $request);
         $description = $this->LanguageData('language', 'description', 'itemDescription',  $request);
 
-        $menus = Menu::select(['id', $name ,$description,'image'])
-            ->where('place_id', '=', $id)->get();
+        $menus = Menu::select(['id', $name ,$description,'image','category_menu_id'])
+            ->where('category_menu_id', '=', $id)->get();
 
         return $this->returnData('menu', $menus);
     }// End Index

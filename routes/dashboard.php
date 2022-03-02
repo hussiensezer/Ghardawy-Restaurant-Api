@@ -33,6 +33,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         Route::get('place/{id}/menu/create', 'MenuController@create')->name('place.menu.create');
         Route::post('place/{id}/menu/store', 'MenuController@store')->name('place.menu.store');
 
+        //Route::Categories Of Menu
+        Route::get('place/{id}/category/index', 'MenuCategoryController@index')->name('place.category.index');
+        Route::get('place/{id}/category/create', 'MenuCategoryController@create')->name('place.category.create');
+        Route::post('place/{id}/category/store', 'MenuCategoryController@store')->name('place.category.store');
+        Route::put('place/{id}/category/{category}/update', 'MenuCategoryController@update')->name('place.category.update');
+
         // Route::Sizes
         Route::resource('sizes', 'SizeController');
     });

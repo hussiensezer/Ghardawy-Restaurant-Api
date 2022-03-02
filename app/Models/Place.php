@@ -19,6 +19,10 @@ class Place extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function menuCategories() {
+        return $this->hasMany(MenuCategory::class , 'place_id', 'id');
+    }
+
     public function ownerId() {
         return $this->belongsTo(Owner::class,'owner_id', 'id');
     }
