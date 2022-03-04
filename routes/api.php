@@ -36,5 +36,10 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
     Route::group(['middleware' => ['auth.guard:api-customer']] ,function(){
     //Cart Routes
     Route::post('cart/checkout', 'CartController@checkout')->name('cart.checkout');
+
+    // Order Route
+    Route::get('orders/inDeal', 'OrderController@inDeal')->name('orders.inDeal');
+    Route::delete('order/destroyPendingOrder', 'OrderController@destroyPendingOrder')->name('order.destroyPendingOrder');
+    Route::get('order/pastOrders', 'OrderController@pastOrders')->name('order.pastOrders');
     });
 });

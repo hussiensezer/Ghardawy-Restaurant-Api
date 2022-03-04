@@ -25,7 +25,7 @@
                     <h2 class="card-title font-large-2" >{{$category->name}}</h2>
                 </div>
                 <div class="card-content">
-                    <img class="img-fluid" src="{{URL::to('public/files/categoryMenu/'. $category->image)}}" alt="{{$category->name}}">
+                    <img class="img-fluid" src="{{$category->image}}" alt="{{$category->name}}">
                 </div>
                 <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
                     <b class="badge badge{{$category->status == 1 ? '-success' : '-danger'}}">@lang('global.status_' .$category->status )</b>
@@ -92,7 +92,7 @@
                                                 <input type="file" id="icon_category" class="form-control" placeholder="@lang('category.icon_category')"  accept="image/jpeg , image/png ,image/gif,image/jpg, image/svg" name="icon_category" value="{{old('icon_category')}}">
                                             </div>
                                          <div class="col-md-1">
-                                                    <img src="{{URL::to('public/files/categoryMenu/'. $category->image)}}" alt="{{$category->name}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 75px; height: 75px" alt="">
+                                                    <img src="{{$category->image}}" alt="{{$category->name}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 75px; height: 75px" alt="">
                                                 </div>
                                         </div>
                                         <h4 class="form-section"><i class="la la-cog" style="font-size: 20px"></i> @lang('global.setting')</h4>

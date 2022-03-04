@@ -14,117 +14,116 @@ class CartController extends Controller
 use GeneralTrait;
     public function checkout(Request $request) {
 
-            $array = [
-                'order'=> [
-               'place'     => 1,
-                'total'   => 2000,
-                //Start Item
-               'items' => [
-                  [
-                      'item_id' => 1,
-                      'size'    => 2,
-                      'place_id'    => 3,
-                      'price'       => 100,
-                      'quantity'    => 2,
-                   'add_ons'    =>
-                       [
-                        [
-                            'addon_id' => 1,
-                            'quantity' => 3,
-                            'price'  => 100,
-                        ],
-                           [
-                               'addon_id' => 1,
-                               'quantity' => 3,
-                               'price'   => 100,
-                           ],
-                           [
-                               'addon_id' => 1,
-                               'quantity' => 3,
-                               'price'   => 100,
-                           ],
-                           [
-                               'addon_id' => 1,
-                               'quantity' => 3,
-                               'price'   => 100,
-                           ],
-                       ]
-                  ],// End Item
-
-                   [ //Start Item
-                       'item_id' => 1,
-                       'size'    => 2,
-                       'place_id'    => 3,
-                       'price'       => 100,
-                       'quantity'    => 2,
-                       'add_ons'    =>
-                           [
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                           ]
-                   ],// End Item
-
-
-                   [ //Start Item
-                       'item_id' => 1,
-                       'size'    => 2,
-                       'place_id'    => 3,
-                       'price'       => 100,
-                       'quantity'    => 2,
-                       'add_ons'    =>
-                           [
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                               [
-                                   'addon_id' => 1,
-                                   'quantity' => 3,
-                                   'price'   => 100,
-                               ],
-                           ]
-                   ],// End Item
-               ],
-            ],
-            ];
-
-        return $request;
+//            $array = [
+//                'order'=> [
+//               'place'     => 1,
+//                'total'   => 2000,
+//
+//               'items' => [
+//                  [
+//                      'item_id' => 1,
+//                      'size'    => 2,
+//                      'place_id'    => 3,
+//                      'price'       => 100,
+//                      'quantity'    => 2,
+//                   'add_ons'    =>
+//                       [
+//                        [
+//                            'addon_id' => 1,
+//                            'quantity' => 3,
+//                            'price'  => 100,
+//                        ],
+//                           [
+//                               'addon_id' => 1,
+//                               'quantity' => 3,
+//                               'price'   => 100,
+//                           ],
+//                           [
+//                               'addon_id' => 1,
+//                               'quantity' => 3,
+//                               'price'   => 100,
+//                           ],
+//                           [
+//                               'addon_id' => 1,
+//                               'quantity' => 3,
+//                               'price'   => 100,
+//                           ],
+//                       ]
+//                  ],
+//
+//                   [
+//                       'item_id' => 1,
+//                       'size'    => 2,
+//                       'place_id'    => 3,
+//                       'price'       => 100,
+//                       'quantity'    => 2,
+//                       'add_ons'    =>
+//                           [
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                           ]
+//                   ],
+//
+//
+//                   [
+//                       'item_id' => 1,
+//                       'size'    => 2,
+//                       'place_id'    => 3,
+//                       'price'       => 100,
+//                       'quantity'    => 2,
+//                       'add_ons'    =>
+//                           [
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                               [
+//                                   'addon_id' => 1,
+//                                   'quantity' => 3,
+//                                   'price'   => 100,
+//                               ],
+//                           ]
+//                   ],
+//               ],
+//            ],
+//            ];
+//
+//        return $request->order['total'];
         try{
-            $collection = collect($array);
 
 
-            $place = Place::find($collection['place']);
+            $place = Place::find($request->order['place']);
 
-            $totalPrice = $collection['total'] + $place->tax + $place->fees + $place->delivers; // Total Price Of Order
+            $totalPrice = $request->order['total'] + $place->tax + $place->fees + $place->delivers; // Total Price Of Order
             $order =  Order::create([
                 'customer_id'       => auth()->user()->id,
                 'place_id'          => $place->id,
@@ -135,7 +134,7 @@ use GeneralTrait;
                 'total_price'       => $totalPrice,
             ]);// End Create Order
 
-            foreach($collection['items'] as $item) {
+            foreach($request->order['items'] as $item) {
                 $items =  $order->items()->create([
                     'menu_id'       => $item['item_id'],
                     'size_id'       => $item['size'],
@@ -178,4 +177,6 @@ use GeneralTrait;
         }
 
     }// End Store
+
+
 }

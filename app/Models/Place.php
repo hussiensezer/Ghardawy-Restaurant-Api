@@ -30,4 +30,13 @@ class Place extends Model
     public function menus() {
         return $this->hasMany( Menu::class ,'place_id', 'id');
     }// End Menus
+
+
+
+    public function getThumbAttribute($value) {
+        return public_path('files/places/') . $value;
+    }
+    public function getBannerAttribute($value) {
+        return public_path('files/places/') . $value;
+    }
 }

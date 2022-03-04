@@ -15,4 +15,9 @@ class MenuPriceSize extends Model
     public function sizeId() {
         return $this->belongsTo(Size::class , 'size_id', 'id');
     }
+
+
+    public function getImageAttribute($value) {
+        return public_path('files/menus/') . $value;
+    }
 }

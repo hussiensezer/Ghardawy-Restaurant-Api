@@ -168,7 +168,7 @@
             <div class="col-md-6">
                 <label for="thumb" class="">
                     @lang('place.thumbnail_image')
-                    <img src="{{URL::to('public/files/places/'. $place->thumb)}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 50px; height: 50px" alt="">
+                    <img src="{{$place->thumb}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 50px; height: 50px" alt="">
                 </label>
                 <input type="file" name="thumb" id="thumb" class="form-control">
                 <div class="alert alert-danger mt-1 d-none" style="color:white !important;"></div>
@@ -177,7 +177,7 @@
             <div class="col-md-6">
                 <label for="banner" class="">
                     @lang('place.banner_image')
-                    <img src="{{URL::to('public/files/places/'. $place->banner)}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 50px; height: 50px" alt="">
+                    <img src="{{$place->banner}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 50px; height: 50px" alt="">
 
                 </label>
                 <input type="file" name="banner" id="banner" class="form-control">

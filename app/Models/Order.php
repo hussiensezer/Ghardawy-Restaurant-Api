@@ -17,4 +17,12 @@ class Order extends Model
     public function notification() {
         return $this->hasMany( Notification::class, 'order_id', 'id');
     }
+
+    public function placeId() {
+        return $this->belongsTo(Place::class, 'place_id', 'id');
+    }
+
+    public function captionId() {
+        return $this->hasOne(Caption::class, 'id', 'caption_id');
+    }
 }

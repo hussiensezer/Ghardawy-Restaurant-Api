@@ -22,4 +22,8 @@ class MenuCategory extends UnicodeModel
         return $this->belongsTo(Place::class, 'place_id', 'id');
     }// End Place
 
+
+    public function getImageAttribute($value) {
+        return public_path('files/categoryMenu/') . $value;
+    }
 }

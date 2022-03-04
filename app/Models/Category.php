@@ -17,4 +17,8 @@ class Category extends UnicodeModel
     public function adminId() {
         return $this->belongsTo(Admin::class,'admin_id', 'id');
     }
+
+    public function getCategoryImageAttribute($value) {
+        return public_path('files/category/') . $value;
+    }
 }

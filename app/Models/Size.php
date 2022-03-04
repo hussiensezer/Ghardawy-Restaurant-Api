@@ -19,4 +19,7 @@ class Size extends Model
    public function adminId() {
        return $this->belongsTo(Admin::class, 'admin_id', 'id');
    }
+
+
+
 }

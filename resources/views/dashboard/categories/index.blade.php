@@ -33,7 +33,8 @@
                    <td>{{str_limit($category->name,10)}}</td>
                    <td>{{$category->sorting}}</td>
                    <td>
-                       <img src="{{URL::to('public/files/category/'. $category->category_image)}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 50px; height: 50px" alt="">
+                       <img src="{{$category->category_image}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 50px; height: 50px" alt="">
+
                    </td>
                    <td>{{$category->adminId->name}}</td>
                    <td>

@@ -23,7 +23,6 @@ class CreatePlacesTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('owner_id');
-            $table->unsignedBigInteger('menu_category_id');
             $table->string('address');
             $table->string('phone');
             $table->string('working_hours');
