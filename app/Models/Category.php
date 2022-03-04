@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Abstracts\UnicodeModel;
+use Illuminate\Support\Facades\URL;
 use Spatie\Translatable\HasTranslations;
 
 class Category extends UnicodeModel
@@ -19,6 +20,6 @@ class Category extends UnicodeModel
     }
 
     public function getCategoryImageAttribute($value) {
-        return public_path('files/category/') . $value;
+        return URL::to('public/files/category/'  . $value);
     }
 }

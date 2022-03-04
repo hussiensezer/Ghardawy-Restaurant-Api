@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class MenuPriceSize extends Model
 {
@@ -18,6 +19,6 @@ class MenuPriceSize extends Model
 
 
     public function getImageAttribute($value) {
-        return public_path('files/menus/') . $value;
+        return URL::to('public/files/menus/'  . $value);
     }
 }

@@ -35,6 +35,7 @@
                    <td>
                        <img src="{{$category->category_image}}" class="img-thumbnail shadow-1" style="border-radius: 50%; width: 50px; height: 50px" alt="">
 
+
                    </td>
                    <td>{{$category->adminId->name}}</td>
                    <td>

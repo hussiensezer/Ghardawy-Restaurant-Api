@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 use Spatie\Translatable\HasTranslations;
 
 class Place extends Model
@@ -34,9 +35,10 @@ class Place extends Model
 
 
     public function getThumbAttribute($value) {
-        return public_path('files/places/') . $value;
+
+        return URL::to('public/files/places/'  . $value);
     }
     public function getBannerAttribute($value) {
-        return public_path('files/places/') . $value;
+        return URL::to('public/files/places/'  . $value);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Abstracts\UnicodeModel;
+use Illuminate\Support\Facades\URL;
 use Spatie\Translatable\HasTranslations;
 
 class MenuCategory extends UnicodeModel
@@ -24,6 +25,6 @@ class MenuCategory extends UnicodeModel
 
 
     public function getImageAttribute($value) {
-        return public_path('files/categoryMenu/') . $value;
+        return URL::to('public/files/categoryMenu/'  . $value);
     }
 }
