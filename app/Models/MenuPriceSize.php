@@ -18,7 +18,5 @@ class MenuPriceSize extends Model
     }
 
 
-    public function getImageAttribute($value) {
-        return URL::to('public/files/menus/'  . $value);
-    }
+
 }

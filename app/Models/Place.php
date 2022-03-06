@@ -38,7 +38,7 @@ class Place extends Model
 
         return URL::to('public/files/places/'  . $value);
     }
-    public function getBannerAttribute($value) {
-        return URL::to('public/files/places/'  . $value);
+    public function getBannerAttribute($banner) {
+        return URL::to('public/files/places/'  . $banner);
     }
 }
