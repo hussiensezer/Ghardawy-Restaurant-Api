@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Abstracts\UnicodeModel;
+
 use Illuminate\Support\Facades\URL;
 use Spatie\Translatable\HasTranslations;
 
-class Place extends Model
+class Place extends  UnicodeModel
 {
     use HasTranslations;
 
@@ -34,9 +35,9 @@ class Place extends Model
 
 
 
-    public function getThumbAttribute($value) {
+    public function getThumbAttribute($thumb) {
 
-        return URL::to('public/files/places/'  . $value);
+        return URL::to('public/files/places/'  . $thumb);
     }
     public function getBannerAttribute($banner) {
         return URL::to('public/files/places/'  . $banner);
