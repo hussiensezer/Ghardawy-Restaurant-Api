@@ -49,4 +49,8 @@ class Customer extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function place() {
+        return $this->hasOne(Place::class, 'owner_id', 'id');
+    }
+
 }

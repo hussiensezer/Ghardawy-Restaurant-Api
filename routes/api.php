@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
-
+/*******************************************************************************************************/
+    // Start Customers Routes
+/*******************************************************************************************************/
    Route::namespace('Auth')->group(function(){
 
        Route::post('register', 'RegisterController@register')->name('register');
@@ -42,4 +44,38 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
     Route::delete('order/destroyPendingOrder', 'OrderController@destroyPendingOrder')->name('order.destroyPendingOrder');
     Route::get('order/pastOrders', 'OrderController@pastOrders')->name('order.pastOrders');
     });
+
+    /*******************************************************************************************************/
+    // End Customers Routes
+    /*******************************************************************************************************/
+
+
+
+    /*******************************************************************************************************/
+    // Start Place Routes
+    /*******************************************************************************************************/
+
+        Route::namespace('Business')->group(function(){
+            Route::namespace('Auth')->group(function(){
+
+            Route::post('business/login', 'LoginController@login')->name('business.login');
+
+            Route::group(['middleware' => ['auth.guard:api-owner']] ,function(){
+
+                Route::get('business/profile', 'ProfileController@profile')->name('business.profile');
+                Route::post('business/logout', 'LogoutController@logout')->name('business.logout');
+                });// End Guard Owner
+
+            });// End Namespace Auth
+            Route::group(['middleware' => ['auth.guard:api-owner']] ,function(){
+                // Category Route
+                Route::get('business/categories',  'CategoryController@index')->name('business.categories');
+                Route::post('business/category/{id}/updateStatus',  'CategoryController@updateStatus')->name('business.category.updateStatus');
+            });
+
+    });// End Namespace Business
+
+        /*******************************************************************************************************/
+    // End Place Routes
+    /*******************************************************************************************************/
 });

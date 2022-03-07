@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	'use strict';
-	//Login Register Validation
+	//LoginController Register Validation
 	if($("form.form-horizontal").attr("novalidate")!=undefined){
 		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 	}
@@ -12,7 +12,7 @@ $(document).ready(function(){
 			radioClass: 'iradio_square-blue',
 		});
 	}
-	
+
 	// For change default year in copyright
 	var $year = new Date().getFullYear();
 	$(".year").text($year);

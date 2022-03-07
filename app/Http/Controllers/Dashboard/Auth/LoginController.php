@@ -13,7 +13,7 @@ class LoginController extends Controller
 
         return view("auth.login");
 
-    }// End Login
+    }// End LoginController
 
     public function loginProcess(Request $request) {
 

@@ -24,7 +24,13 @@ class MenuCategory extends UnicodeModel
     }// End Place
 
 
+
+
     public function getImageAttribute($value) {
         return URL::to('public/files/categoryMenu/'  . $value);
-    }
+    }// End Get Image Attribute;
+
+    public function scopeOwnedBusiness($query) {
+        return $query->where('place_id', auth()->user()->place->id);
+    }// End ScopePlace
 }
