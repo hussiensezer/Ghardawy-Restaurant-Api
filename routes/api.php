@@ -68,14 +68,63 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
 
             });// End Namespace Auth
             Route::group(['middleware' => ['auth.guard:api-owner']] ,function(){
+
+                //Place Route
+                Route::post('business/UpdateStatus', 'PlaceController@updateStatus')->name('business.updateStatus');
+
+                // Notifications
+                Route::get('business/notifications', 'PlaceController@notifications')->name('business.notifications');
+                Route::get('business/someNotifications', 'PlaceController@someNotifications')->name('business.someNotifications');
+
                 // Category Route
                 Route::get('business/categories',  'CategoryController@index')->name('business.categories');
                 Route::post('business/category/{id}/updateStatus',  'CategoryController@updateStatus')->name('business.category.updateStatus');
+
+                // Menu Route
+                Route::get('business/category/{id}/menus', 'MenuController@index')->name('business.category.menus');
+                Route::post('business/menu/{id}/updateStatus','MenuController@updateMenuStatus')->name('business.menu.updateStatus');
+                Route::post('business/addOn/{id}/updateStatus','MenuController@updateAddonsStatus')->name('business.addOn.updateStatus');
+
+                //Orders Route
+
+                Route::get('business/orders', 'OrderController@index')->name('business.orders');
+                Route::get('business/order/{id}/details', 'OrderController@orderDetails')->name('business.order.details');
+                Route::post('business/order/{id}/cancel', 'OrderController@orderCancel')->name('business.order.cancel');
             });
 
     });// End Namespace Business
 
-        /*******************************************************************************************************/
+    /*******************************************************************************************************/
     // End Place Routes
     /*******************************************************************************************************/
+
+
+/*******************************************************************************************************/
+// Start Caption Routes
+/*******************************************************************************************************/
+    Route::namespace('Caption')->group(function(){
+
+        Route::namespace('Auth')->group(function() {
+
+            Route::post('caption/login', 'LoginController@login');
+
+
+            Route::group(['middleware' => ['auth.guard:api-caption']] ,function(){
+
+                Route::get('caption/profile', 'ProfileController@profile')->name('caption.profile');
+                Route::post('caption/logout', 'LogoutController@logout')->name('caption.logout');
+                Route::post('caption/updateMode', 'ModeController@updateMode')->name('caption.updateMode');
+            });// End Guard Caption
+
+        }); // End Auth NameSpace
+    });// End Caption NameSpace
+
+
+/*******************************************************************************************************/
+// End Caption Routes
+/*******************************************************************************************************/
 });
+
+
+
+

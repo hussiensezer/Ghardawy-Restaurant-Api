@@ -23,14 +23,11 @@ class CategoryController extends Controller
 
 
     public function updateStatus(Request $request,$id) {
-
-
         try{
             $rule = [
                 'status'    => ['required', 'boolean']
             ];
             $validator = Validator::make($request->all(),$rule);
-
             if($validator->fails()) {
                 $code = $this->returnCodeAccordingToInput($validator);
                 return $this->returnValidationError($code , $validator);

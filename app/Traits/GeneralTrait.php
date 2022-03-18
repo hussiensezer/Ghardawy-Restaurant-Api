@@ -37,7 +37,15 @@ trait GeneralTrait
             $key => $value
         ]);
     }
-
+//    public function returnArrayData($key,$value,$msg = '') {
+//        return response() ->json([
+//            'status' => true,
+//            'errNum'    => 'S000',
+//            'msg' => $msg,
+//            $key => $value,
+//
+//        ]);
+//    }
     //////////////////
     public function returnValidationError($code = "E001", $validator)
     {

@@ -54,6 +54,13 @@ return [
 
         ],
 
+        'api-caption' => [
+            'driver' => 'jwt',
+            'provider' => 'api-caption',
+
+        ],
+
+
         'admins' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -86,6 +93,11 @@ return [
         'api-owner' => [
             'driver' => 'eloquent',
             'model' => \App\Models\Owner::class,
+        ],
+
+        'api-caption' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Caption::class,
         ],
 
          'users' => [

@@ -19,9 +19,12 @@ class MenuCategoryController extends Controller
 
        $name = $this->LanguageData('language', 'name' , 'categoryMenuName' ,$request);
        $categoriesMenu = MenuCategory::select(['id',$name, 'image'])
-           ->where('status', 1)
+           ->where([
+               ['status', 1],
+               ['place_id', $id]
+           ])
            ->orderBy('sort', 'asc')
-           ->get($id);
+           ->paginate(config('setting.LimitPaginate'));
        return $this->returnData('categoriesMenu', $categoriesMenu);
    }// End Index
 }

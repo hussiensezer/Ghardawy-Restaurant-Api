@@ -19,10 +19,16 @@ class CreateCaptionsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('password');
-            $table->decimal('latitude',10, 8);
-            $table->decimal('longitude',11, 8);
-            $table->boolean('status');
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->unsignedBigInteger('admin_id');
+            $table->boolean('status')->default(1);
+            $table->boolean('online')->default(1);
+            $table->boolean('have_order')->default(0); // 0 Mean No Order, Yes Mean Have Order
             $table->timestamps();
+
+            $table->foreign("admin_id")->references("id")->on("admins")->onDelete("cascade")->cascadeOnUpdate();
+
         });
     }
 

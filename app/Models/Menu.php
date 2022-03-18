@@ -28,4 +28,9 @@ class Menu extends UnicodeModel
     public function getImageAttribute($value) {
         return URL::to('public/files/menus/'  . $value);
     }
+
+    public function scopeOwnedBusiness($query) {
+        return $query->where('place_id', auth()->user()->place->id);
+    }// End ScopePlace
+
 }

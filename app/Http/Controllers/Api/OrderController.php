@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Traits\GeneralTrait;
 use App\Traits\LanguageTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,15 +15,20 @@ use Illuminate\Validation\Rule;
 class OrderController extends Controller
 {
     use GeneralTrait, LanguageTrait;
+
     /**
      * this for order [pending,preparing , accepted, On Way]
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function inDeal() {
+    public function inDeal(Request $request) {
+        $name = $this->LanguageData('language', 'name', 'placeName',  $request);
+
         $order =  Order::where('customer_id' , '=', auth()->user()->id)
             ->whereIn('status', ['Pending', 'Preparing', 'On-Way'])
             ->with([
-                'placeId'   => function($q) {
-                    $q->select(['id', 'name']);
+                'placeId'   => function($q) use($name){
+                    $q->select(['id', $name]);
                 },
 
                 'captionId'

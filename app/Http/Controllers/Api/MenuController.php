@@ -17,7 +17,10 @@ class MenuController extends Controller
         $description = $this->LanguageData('language', 'description', 'itemDescription',  $request);
 
         $menus = Menu::select(['id', $name ,$description,'image','category_menu_id'])
-            ->where('category_menu_id', '=', $id)->get();
+            ->where([
+                ['category_menu_id', '=', $id],
+                ['status', 1]
+            ])->latest()->paginate(config('setting.LimitPaginate'));
 
         return $this->returnData('menu', $menus);
     }// End Index

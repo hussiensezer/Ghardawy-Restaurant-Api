@@ -42,4 +42,6 @@ class Place extends  UnicodeModel
     public function getBannerAttribute($banner) {
         return URL::to('public/files/places/'  . $banner);
     }
+
+
 }

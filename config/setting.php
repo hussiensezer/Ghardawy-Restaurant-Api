@@ -4,7 +4,7 @@ return [
     //Api_KEY
     'api_key' => env('API_KEY'),
 
-
+    'notification_limit' => 5,
     // Limit Paginate
     'LimitPaginate' => 20,
 
