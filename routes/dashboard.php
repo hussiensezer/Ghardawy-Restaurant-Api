@@ -22,7 +22,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::prefix('dashboard')->name('dashboard.')->middleware(['auth:admins'])->group(function(){
         Route::post("logout", 'Auth\LogoutController@logout')->name('logout');
         Route::get('home' ,'HomeController@home')->name('home');
-
+        Route::post('send', 'HomeController@send')->name('send');
         //Route::Categories
         Route::resource('categories', 'CategoryController');
 

@@ -101,5 +101,26 @@ class OrderController extends Controller
             DB::rollback();
             return $this->returnError('',$e->getMessage());
         }
-    }
+    }// End Cancel Order
+
+    public function acceptPendingOrder($id) {
+        try{
+           $order = Order::where([
+               ['place_id',  auth('api-owner')->user()->place->id],
+               ['status','Pending']
+           ])->find($id);
+
+           if(!$order) {
+               return $this->returnError('404', 'Order Not Found Or Delete');
+           }
+           $order->update([
+               'status' => 'Preparing'
+           ]);
+            
+           return $this->returnSuccessMessage('تم الموفقه على العرض وجارى البحث عن موصل للطلب');
+        }
+        catch (\Exception $e) {
+            return $this->returnError('',$e->getMessage());
+        }
+    }// End Accept Pending Order
 }

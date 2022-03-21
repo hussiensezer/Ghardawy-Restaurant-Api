@@ -17,30 +17,25 @@ class CategoryController extends Controller
         $categories = MenuCategory::select(['id', $name,'image', 'status','sort'])
             ->orderBy('sort', 'desc')
             ->ownedBusiness()->paginate(config('setting.LimitPaginate'));
-
+        if(!$categories) {
+            return $this->returnError('404', 'Sorry No Categories');
+        }
     return $this->returnData('categories', $categories);
     }// End Index
 
 
-    public function updateStatus(Request $request,$id) {
+    public function updateStatus($id) {
         try{
-            $rule = [
-                'status'    => ['required', 'boolean']
-            ];
-            $validator = Validator::make($request->all(),$rule);
-            if($validator->fails()) {
-                $code = $this->returnCodeAccordingToInput($validator);
-                return $this->returnValidationError($code , $validator);
-            }
             $category = MenuCategory::ownedBusiness()->find($id);
 
             if(!$category) {
-                return $this->returnError('E404' ,'Cannot Found This Category Or Maybe Delete ....');
+                return $this->returnError('E404', 'Cannot Found This Category Or Maybe Delete ....');
             }
 
             $category->update([
-                'status'    => $request->status,
+               'status' => $category->status == 1 ? 0 : 1, //if status true will be false and else false will be true
             ]);
+
 
             return $this->returnSuccessMessage('Status Updated Successful');
         }

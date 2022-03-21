@@ -17,7 +17,8 @@
         "mcamara/laravel-localization": "^1.7",
         "spatie/laravel-translatable": "^4.6",
         "tymon/jwt-auth": "^1.0",
-        "yoeunes/toastr": "^1.2"
+        "yoeunes/toastr": "^1.2",
+        "ext-curl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

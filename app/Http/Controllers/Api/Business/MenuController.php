@@ -25,26 +25,21 @@ class MenuController extends Controller
             ])->ownedBusiness()
             ->paginate(config('setting.LimitPaginate'));
 
+        if(!$menus) {
+            $this->returnError('404', 'Sorry Menus Not Found');
+        }
         return $this->returnData('menu', $menus);
     }// End Index
 
-    public function updateMenuStatus(Request $request,$id) {
+    public function updateMenuStatus($id) {
       try {
-          $rule = [
-              'status'    => ['required', 'boolean']
-          ];
-          $validator = Validator::make($request->all(),$rule);
-          if($validator->fails()) {
-              $code = $this->returnCodeAccordingToInput($validator);
-              return $this->returnValidationError($code , $validator);
-          }
           $menu = Menu::ownedBusiness()->find($id);
           if(!$menu) {
               return $this->returnError('E404' ,'Cannot Found This Item Or Maybe Delete ....');
           }
 
           $menu->update([
-              'status'    => $request->status,
+              'status'    => $menu->status == 1 ? 0 : 1, //if status true will be false and else false will be true
           ]);
           return $this->returnSuccessMessage('Status Updated Successful');
       }catch (\Exception $e) {
@@ -54,17 +49,9 @@ class MenuController extends Controller
 
     }// End Update Menu Status
 
-    public function updateAddonsStatus(Request $request, $id) {
+    public function updateAddonsStatus($id) {
 
         try {
-            $rule = [
-                'status'    => ['required', 'boolean']
-            ];
-            $validator = Validator::make($request->all(),$rule);
-            if($validator->fails()) {
-                $code = $this->returnCodeAccordingToInput($validator);
-                return $this->returnValidationError($code , $validator);
-            }
 
             // Find Addons
             $addOn =  Addon::find($id);
@@ -80,7 +67,7 @@ class MenuController extends Controller
 
             if($menu) {
                 $addOn->update([
-                   'status' => $request->status
+                   'status' => $addOn->status == 1 ? 0 : 1, //if status true will be false and else false will be true
                 ]);
                 return $this->returnSuccessMessage('Status Updated Successful');
             }else {

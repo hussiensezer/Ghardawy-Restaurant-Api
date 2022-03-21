@@ -12,23 +12,16 @@ use Illuminate\Support\Facades\Validator;
 class PlaceController extends Controller
 {
     use GeneralTrait;
-    public function updateStatus(Request $request) {
+    public function updateStatus() {
         try{
-            $rule = [
-                'status'    => ['required', 'boolean']
-            ];
-            $validator = Validator::make($request->all(),$rule);
-            if($validator->fails()) {
-                $code = $this->returnCodeAccordingToInput($validator);
-                return $this->returnValidationError($code , $validator);
-            }
+
             $place = Place::where('owner_id', auth('api-owner')->user()->id)->first();
 
             if(!$place) {
                 return $this->returnError('404', 'Place Not Found Or Delete Try Later');
             }
             $place->update([
-                'status' => $request->status
+                'status' => $place->status == 1 ? 0 : 1, //if status true will be false and else false will be true
             ]);
             // Login
             return $this->returnSuccessMessage('Status Of Place Updated Successfully');

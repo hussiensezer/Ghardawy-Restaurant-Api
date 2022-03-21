@@ -90,6 +90,7 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
                 Route::get('business/orders', 'OrderController@index')->name('business.orders');
                 Route::get('business/order/{id}/details', 'OrderController@orderDetails')->name('business.order.details');
                 Route::post('business/order/{id}/cancel', 'OrderController@orderCancel')->name('business.order.cancel');
+                Route::post('business/order/{id}/acceptPendingOrder', 'OrderController@acceptPendingOrder')->name('business.order.acceptPendingOrder');
             });
 
     });// End Namespace Business
