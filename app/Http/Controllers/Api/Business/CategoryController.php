@@ -31,13 +31,13 @@ class CategoryController extends Controller
             if(!$category) {
                 return $this->returnError('E404', 'Cannot Found This Category Or Maybe Delete ....');
             }
-
+            $mode = $category->status == 1 ? 'Not Available': 'Available' ;
             $category->update([
                'status' => $category->status == 1 ? 0 : 1, //if status true will be false and else false will be true
             ]);
 
 
-            return $this->returnSuccessMessage('Status Updated Successful');
+            return $this->returnData('mode' , $mode, 'Status Updated Successful');
         }
         catch (\Exception $e) {
             return $this->returnError('',$e->getMessage());

@@ -37,11 +37,11 @@ class MenuController extends Controller
           if(!$menu) {
               return $this->returnError('E404' ,'Cannot Found This Item Or Maybe Delete ....');
           }
-
+          $mode = $menu->status == 1 ? 'Not Available': 'Available' ;
           $menu->update([
               'status'    => $menu->status == 1 ? 0 : 1, //if status true will be false and else false will be true
           ]);
-          return $this->returnSuccessMessage('Status Updated Successful');
+          return $this->returnData('mode' , $mode, 'Status Updated Successful');
       }catch (\Exception $e) {
           return $this->returnError('',$e->getMessage());
       }
@@ -66,10 +66,11 @@ class MenuController extends Controller
             ])->ownedBusiness()->get();
 
             if($menu) {
+                $mode = $addOn->status == 1 ? 'Not Available': 'Available' ;
                 $addOn->update([
                    'status' => $addOn->status == 1 ? 0 : 1, //if status true will be false and else false will be true
                 ]);
-                return $this->returnSuccessMessage('Status Updated Successful');
+                return $this->returnData('mode' , $mode, 'Status Updated Successful');
             }else {
                 return $this->returnError('E404', 'The Add-On Not Found Or Delete');
             }

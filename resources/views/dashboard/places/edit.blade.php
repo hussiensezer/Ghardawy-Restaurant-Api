@@ -119,14 +119,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="longitude">@lang('place.longitude')</label>
-                        <input type="number" min="-180" max="180" step=".1" id="longitude" class="form-control" placeholder="@lang('place.longitude')" name="longitude" value="{{$place->longitude}}">
+                        <input type="number" min="-180" max="180" step=".000000000000001" id="longitude" class="form-control" placeholder="@lang('place.longitude')" name="longitude" value="{{$place->longitude}}">
                         <div class="alert alert-danger mt-1 d-none" style="color:white !important;"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="latitude">@lang('place.latitude')</label>
-                        <input type="number" min="-90" max="90" step=".1" id="latitude" class="form-control" placeholder="@lang('place.latitude')" name="latitude" value="{{$place->latitude}}">
+                        <input type="number" min="-90" max="90" step=".000000000000001" id="latitude" class="form-control" placeholder="@lang('place.latitude')" name="latitude" value="{{$place->latitude}}">
                         <div class="alert alert-danger mt-1 d-none" style="color:white !important;"></div>
                     </div>
                 </div>

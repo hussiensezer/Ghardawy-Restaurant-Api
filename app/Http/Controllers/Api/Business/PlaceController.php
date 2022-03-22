@@ -20,11 +20,13 @@ class PlaceController extends Controller
             if(!$place) {
                 return $this->returnError('404', 'Place Not Found Or Delete Try Later');
             }
+
+            $mode = $place->status == 1 ? 'Not Available': 'Available' ;
             $place->update([
                 'status' => $place->status == 1 ? 0 : 1, //if status true will be false and else false will be true
             ]);
-            // Login
-            return $this->returnSuccessMessage('Status Of Place Updated Successfully');
+
+            return $this->returnData('mode' , $mode, 'Status Updated Successful');
         }
         catch (\Exception $e) {
             return $this->returnError('',$e->getMessage());
