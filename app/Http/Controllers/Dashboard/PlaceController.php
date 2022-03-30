@@ -79,16 +79,16 @@ class PlaceController extends Controller
             $place = Place::findOrFail($id);
             if($request->hasFile('thumb')) {
                 $thumb = $this->imageStore($request->thumb, 'files', 'places');
-                $this->imageDestroy('files', 'places', $place->thumb);
+                $this->imageDestroy('files', 'places', $place->getRawOriginal('thumb'));
             }else {
-                $thumb = $place->thumb;
+                $thumb =  $place->getRawOriginal('thumb');
             }
 
             if($request->hasFile('banner')) {
                 $banner = $this->imageStore($request->banner, 'files','places');
-                $this->imageDestroy('files', 'places', $place->banner);
+                $this->imageDestroy('files', 'places',  $place->getRawOriginal('banner'));
             }else {
-                $banner = $place->banner;
+                $banner = $place->getRawOriginal('banner');
             }
 
             $place->update([

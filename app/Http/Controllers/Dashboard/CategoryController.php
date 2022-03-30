@@ -65,9 +65,9 @@ class CategoryController extends Controller
 
             if($request->hasFile('icon_category')) {
                     $image =  $this->imageStore($request->icon_category, 'files', 'category');
-                              $this->imageDestroy('files', 'category', $category->category_image);
+                              $this->imageDestroy('files', 'category', $category->getRawOriginal('category_image'));
             }else {
-                    $image = $category->category_image;
+                    $image = $category->getRawOriginal('category_image');
             }// End If
             $category->update([
                 'name'              =>

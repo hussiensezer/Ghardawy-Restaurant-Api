@@ -41,6 +41,24 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
         // Route::Sizes
         Route::resource('sizes', 'SizeController');
+
+        //Route::Customer
+        Route::resource('customers', 'CustomerController');
+
+        //Route::Captions
+        Route::resource('captions', 'CaptionController');
+
+        //Route::Orders
+        Route::get('orders/index', 'OrderController@index')->name('orders.index');
+
+        //Route::Employees
+        Route::resource('employees', 'EmployeeController');
+
+        //Route::Owners
+        Route::resource('owners', 'OwnerController');
+
+        //Route::Permissions
+        Route::resource('permissions', 'PermissionController');
     });
 
 });

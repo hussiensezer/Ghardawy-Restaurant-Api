@@ -22,4 +22,9 @@ class Category extends UnicodeModel
     public function getCategoryImageAttribute($value) {
         return URL::to('public/files/category/'  . $value);
     }
+
+//    public function getOriginalValueAttribute($field)
+//    {
+//        return $this->attributes[$field];
+//    }
 }

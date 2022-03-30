@@ -19,8 +19,8 @@ class CreateCaptionsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('password');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->unsignedBigInteger('admin_id');
             $table->boolean('status')->default(1);
             $table->boolean('online')->default(1);

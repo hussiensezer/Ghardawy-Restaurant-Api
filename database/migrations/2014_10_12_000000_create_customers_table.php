@@ -18,6 +18,8 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string("address");
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
             $table->string("phone", '20')->unique();
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');

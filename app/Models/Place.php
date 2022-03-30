@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Abstracts\UnicodeModel;
 
 use Illuminate\Support\Facades\URL;
+
 use Spatie\Translatable\HasTranslations;
 
 class Place extends  UnicodeModel
@@ -40,7 +41,7 @@ class Place extends  UnicodeModel
         return URL::to('public/files/places/'  . $thumb);
     }
     public function getBannerAttribute($banner) {
-        return URL::to('public/files/places/'  . $banner);
+        return   URL::to('public/files/places/'  . $banner);
     }
 
 

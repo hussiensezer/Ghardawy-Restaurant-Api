@@ -19,6 +19,6 @@ class AdminSeederTable extends Seeder
             'password'  => bcrypt('123456'),
             'status'    => 1,
         ]);
-
+        $user->assignRole("Super Admin");
     }
 }

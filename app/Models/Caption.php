@@ -14,6 +14,10 @@ class Caption extends Authenticatable implements JWTSubject
         'password','admin_id','updated_at',
         'status',
     ];
+
+    public function orders() {
+        return $this->hasMany(Order::class, 'caption_id', 'id');
+    }
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -33,4 +37,6 @@ class Caption extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+
 }

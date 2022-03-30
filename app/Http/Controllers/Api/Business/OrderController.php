@@ -29,11 +29,10 @@ class OrderController extends Controller
                 'captionId' => function ($q) {
                     $q->select(['id', 'name', 'phone']);
                 }
-            ])->get();
+            ])->latest()->paginate(config('setting.LimitPaginate'));
 
-       if(!$orders) {
+        return $this->returnData('orders', $orders);
 
-       }
     }// End Index Get All Orders
 
     public function orderDetails(Request $request, $id)
@@ -132,7 +131,7 @@ class OrderController extends Controller
                ['have_order', 0] // Dont Have Order  = 0
            ]);
             $query = $caption->selectRaw("*,(6371 * acos( cos( radians(" . $placeLatitude .") ) * cos( radians(latitude ) ) * cos( radians(longitude ) - radians(" . $placeLongitude .") ) + sin( radians(". $placeLatitude  .") ) * sin( radians( latitude ) ) ) ) AS distance ")
-                ->havingRaw('distance < 10')->orderBy('distance');
+                ->havingRaw('distance < 10000000000')->orderBy('distance');
            $caption =  $query->first();
 
            // Check If Find Caption Do Sometimes

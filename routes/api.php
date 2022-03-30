@@ -118,6 +118,12 @@ Route::group(["middleware" => ['api','api_key', 'api.language']] ,function(){
             });// End Guard Caption
 
         }); // End Auth NameSpace
+
+
+        Route::group(['middleware' => ['auth.guard:api-caption']] ,function(){
+            Route::get('caption/orders/today', 'OrderController@ordersToday')->name('caption.orders.today');
+        });// End Guard Caption
+
     });// End Caption NameSpace
 
 
