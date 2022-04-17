@@ -24,6 +24,7 @@
                 <th colspan="col">@lang('global.status')</th>
                 <th colspan="col">@lang('global.edit')</th>
                 <th colspan="col">@lang('global.add')</th>
+                <th colspan="col">@lang('global.orders')</th>
             </tr>
             </thead>
            <tbody>
@@ -62,6 +63,11 @@
 
 
                        </div>
+                   </td>
+                   <td>
+                       <a href="{{route("dashboard.place.orders", $place->id)}}" class="btn btn-outline-warning btn-sm">
+                           <i class="la la-eye"></i>
+                       </a>
                    </td>
                </tr>
            @endforeach

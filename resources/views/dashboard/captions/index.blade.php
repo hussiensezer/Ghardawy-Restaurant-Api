@@ -112,6 +112,8 @@
                 <th scope="col">@lang('caption.online')</th>
                 <th scope="col">@lang('global.status')</th>
                 <th scope="col">@lang('global.edit')</th>
+                <th scope="col">@lang('global.orders')</th>
+
 
             </tr>
             </thead>
@@ -198,6 +200,11 @@
                             </div>
                         </form>
                     </td>
+                   <td>
+                       <a href="{{route("dashboard.caption.orders", $caption->id)}}" class="btn btn-outline-warning btn-sm">
+                           <i class="la la-eye"></i>
+                       </a>
+                   </td>
                </tr>
            @endforeach
            </tbody>

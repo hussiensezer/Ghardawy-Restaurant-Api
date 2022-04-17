@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CaptionStoreRequest;
 use App\Http\Requests\CaptionUpdateRequest;
 use App\Models\Caption;
+use App\Models\Order;
+use App\Models\Place;
 use Illuminate\Http\Request;
 
 class CaptionController extends Controller
@@ -64,4 +66,32 @@ class CaptionController extends Controller
 
         }
     }// End Update
+
+
+    public function captionOrders($caption)
+    {
+        $caption = Caption::findOrFail($caption);
+        $orders = Order::with([
+            'placeId' => function ($q) {
+                $q->select(['id', 'name', 'longitude', 'latitude']);
+            },
+            'customerId' => function ($q) {
+                $q->select(['id', 'name', 'phone', 'longitude', 'latitude', 'address']);
+            },
+            'captionId' => function ($q) {
+                $q->select(['id', 'name', 'phone', 'longitude', 'latitude']);
+            },
+            'items.menuId' => function ($q) {
+                $q->select(['id', 'name']);
+            },
+            'items.sizeId' => function ($q) {
+                $q->select(['id', 'name']);
+            },
+            'items.AddOns',
+            'items.AddOns.addonId'
+        ])->where('caption_id', $caption->id)->latest()->paginate(config('setting.LimitPaginate'));
+
+
+        return view("dashboard.places.orders.index", compact('orders'));
+    }// End Caption Orders
 }

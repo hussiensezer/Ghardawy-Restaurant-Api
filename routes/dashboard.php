@@ -29,6 +29,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         // Route::Places
         Route::resource('places', 'PlaceController');
 
+        Route::get('place/{place}/orders', 'OrderController@orderPlace')->name('place.orders');
+
         // Route::Menu Of Places
         Route::get('place/{id}/menu/create', 'MenuController@create')->name('place.menu.create');
         Route::post('place/{id}/menu/store', 'MenuController@store')->name('place.menu.store');
@@ -47,6 +49,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
         //Route::Captions
         Route::resource('captions', 'CaptionController');
+        Route::get('caption/{caption}/orders','CaptionController@captionOrders')->name('caption.orders');
 
         //Route::Orders
         Route::get('orders/index', 'OrderController@index')->name('orders.index');
